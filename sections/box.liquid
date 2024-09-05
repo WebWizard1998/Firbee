@@ -1,0 +1,196 @@
+{% style %}
+      .box_main h2 {
+        font-size: 48px;
+        line-height: 82px;
+        text-align: center;
+        font-weight: 300;
+        margin: 0;
+        padding: 0;
+    }
+    .box_image {
+      margin: 0 auto;
+      text-align: center;
+  }
+  .box_image img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+      .box_main {
+        padding-top: 117px;
+        padding-bottom: 83px;
+    }
+  .featured_on p {
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  }
+  .featured_image_main {
+  display: flex;
+  justify-content: center;
+  gap: 54.55px;
+  padding-top: 20px;
+  padding-bottom: 35px;
+  border-bottom: 1px solid #C4C4C4;
+  }
+  ul.featured_image_point {
+  margin: 0;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  gap: 84px;
+  }
+  .featured_image_point li {
+  font-size: 30px;
+  line-height: 45px;
+  font-weight: 300;
+  position: relative;
+  margin-left: 60px;
+  }
+  .featured_image_point li:before{
+  content: "";
+  background-image: url(https://cdn.shopify.com/s/files/1/0650/4631/5164/files/Subtract.png?v=1725304968);
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: -60px;
+  top: 0;
+  background-repeat: no-repeat;
+  }
+
+  @media(max-width:991px){
+  .box_main {
+  padding-top: 30px;
+  padding-bottom: 0;
+  }
+  .box_main h2 {
+  font-size: 36px;
+  line-height: 46px;
+  }
+  .featured_image_main {
+  flex-wrap: wrap;
+  row-gap: 15px;
+  column-gap: 12px;
+  }
+  ul.featured_image_point {
+         flex-wrap: wrap;
+        gap: 0;
+        justify-content: left;
+        margin: 0;
+        padding: 20px 0;
+  }
+     .featured_image_point li {
+        font-size: 20px;
+        line-height: 30px;
+        width: 100%;
+        padding-bottom: 20px;
+        margin-left: 40px;
+    }
+  .featured_image_point li:before {
+        width: 30px;
+        height: 30px;
+        background-size: 100%;
+        left: -40px;
+    }
+  }
+  @media(max-width:767px){
+  .box_image img {
+  max-width: 346px;
+  width: 100%;
+  height: auto;
+  }
+  }
+{% endstyle %}
+
+<div class="box_main">
+  <div class="sub_container">
+    <h2>{{ section.settings.heading }}</h2>
+    <div class="box_image">
+      <img src="{{ section.settings.box_image | image_url }}" width="824" height="519" alt="box_image">
+    </div>
+    <div class="featured_on">
+      <p>{{ section.settings.sub_heading }}</p>
+      <div class="featured_image_main">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'image' %}
+              <div class="featured_image">
+                <img src="{{ block.settings.image | image_url }}" alt="featured_image">
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+      <ul class="featured_image_point">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'text' %}
+              <li>{{ block.settings.book_point }}</li>
+          {% endcase %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+"name": "box",
+"tag": "section",
+"class": "Box",
+"settings": [
+{
+"type": "text",
+"label": "heading",
+"id": "heading"
+},
+{
+"type": "image_picker",
+"label": "Box Image",
+"id": "box_image"
+},
+{
+"type": "color_background",
+"label": "Background",
+"id": "background"
+},
+{
+"type": "text",
+"label": "Sub heading",
+"id": "sub_heading"
+}
+],
+"blocks": [
+{
+"type": "image",
+"name": "image",
+"settings": [
+{
+"type": "image_picker",
+"label": "Image",
+"id": "image"
+}
+]
+},
+{
+"type": "text",
+"name": "Text",
+"settings": [
+{
+"type": "text",
+"label": "Book Point",
+"id": "book_point"
+}
+]
+}
+],
+"presets": [
+{
+"name": "box"
+}
+]
+}
+{% endschema %}

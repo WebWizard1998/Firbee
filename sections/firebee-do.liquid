@@ -1,0 +1,179 @@
+{% style %}
+      .firebee-do{
+      background:{{section.settings.background}};
+      padding: 100px 0;
+      }
+      .firebee_do_main h2 {
+      text-align: center;
+      font-size: 72px;
+      line-height: 82px;
+      font-weight: 300;
+      color: #3F3631;
+      margin: 0;
+      padding: 0;
+      }
+      .firebee_do_main p {
+      font-size: 24px;
+      line-height: 36px;
+      text-align: center;
+      margin: 0;
+      padding-top: 25px;
+      }
+      .firebee_do_image_content {
+      display: flex;
+      align-items: center;
+      flex-wrap:wrap;
+      }
+      .firebee_content ul li {
+      font-size: 30px;
+      line-height: 45px;
+      position: relative;
+      margin-left: 60px;
+      margin-bottom:30px;
+      }
+      .firebee_content ul li:last-child {
+      margin-bottom: 0;
+      }
+      ul {
+      list-style: none;
+      }
+      .firebee_content ul li:first-child strong {
+      background: linear-gradient(#2E034B, #002182);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      }
+      .firebee_content ul li:nth-child(2) strong{
+      background: linear-gradient(#FF225E, #9D2AC6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      }
+      .firebee_content ul li:nth-child(3) strong{
+      background: linear-gradient(#8BF2B5, #35C8EB);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      }
+      .firebee_content ul li:nth-child(4) strong{
+      background: linear-gradient(#E280DA, #6694EF);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      }
+      .firebee_content ul li:nth-child(5) strong{
+      background: linear-gradient(#A34D9F, #275FD0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      }
+      .firebee_content ul li:before{
+      content: "";
+      background-image: url(https://cdn.shopify.com/s/files/1/0650/4631/5164/files/Subtract.png?v=1725304968);
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      left: -60px;
+      top: 0;
+      background-repeat: no-repeat;
+      }
+      .firebee_do_image img {
+      max-width: 100%;
+      display: block;
+      width: auto;
+      height: auto;
+      }
+  .mb_show{
+    display:none;
+  }
+      @media(max-width:991px){
+      .firebee-do {
+      padding: 0 0;
+      }
+        .desktop_show{
+          display:none;
+        }
+        .mb_show{
+    display:block;
+  }
+        .firebee_do_main h2 {
+        font-size: 36px;
+        line-height: 46px;
+        padding: 30px 20px 0;
+    }
+      .firebee_do_main p {
+      font-size: 18px;
+      line-height: 27px;
+                padding-top: 0;
+      }
+      .firebee_content ul li {
+      font-size: 18px;
+      line-height: 27px;
+      margin-bottom: 20px;
+      margin-left: 40px;
+      }
+      .firebee_content ul li:before {
+      width: 30px;
+      height: 30px;
+      background-size: 100%;
+      left: -40px;
+      }
+      }
+{% endstyle %}
+
+<div class="firebee_do_main">
+  <div class="firebee_do_image mb_show">
+    <img src="{{ section.settings.image | image_url }}" width="598" height="524" alt="firebee_image">
+  </div>
+  <h2>{{ section.settings.heading }}</h2>
+  <p>{{ section.settings.sub_heading }}</p>
+  <div class="firebee_do_image_content">
+    <div class="firebee_do_image desktop_show">
+      <img src="{{ section.settings.image | image_url }}" width="598" height="524" alt="firebee_image">
+    </div>
+    <div class="firebee_content">
+      {{ section.settings.description }}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+"name": "firebee-do",
+"tag": "section",
+"class": "firebee-do",
+"settings": [
+{
+"type": "text",
+"label": "Heading",
+"id": "heading"
+},
+{
+"type": "color_background",
+"label": "Background",
+"id": "background"
+},
+{
+"type": "text",
+"label": "Sub Heading",
+"id": "sub_heading"
+},
+{
+"type": "image_picker",
+"label": "image",
+"id": "image"
+},
+{
+"type": "richtext",
+"label": "description",
+"id": "description"
+}
+],
+"blocks": [],
+"presets": [
+{
+"name": "firebee-do"
+}
+]
+}
+{% endschema %}

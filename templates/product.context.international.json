@@ -1,0 +1,1 @@
+{"parent":"product.json","context":{"market":"international"},"sections":{"main":{"settings":{},"blocks":{"buy_buttons":{"settings":{"show_dynamic_checkout":false,"show_gift_card_recipient":false}}},"block_order":["vendor","title","variant_picker","quantity_selector","buy_buttons","description","share"]}},"order":["main","related-products"]}

@@ -1,0 +1,95 @@
+{% style %}
+   .custom_announcement_inner{
+   background-image:url({{ section.settings.background_image | image_url }});
+   width: 100%;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   padding: 22px 0 23px;
+   }
+   .custom_announcement_title {
+   text-align: center;
+   }
+   .mb_show{
+   display:none;
+   }
+   .custom_announcement_title p{
+   margin:0;
+   color:{{section.settings.text_color}};
+   font-size: 24px;
+   line-height: 29.05px;
+   font-weight: 800;
+   text-transform: uppercase;
+   letter-spacing: 1.5px;
+   }
+
+   @media(max-width:767px){
+   .custom_announcement_title p {
+   font-size: 18px;
+   line-height: 21.78px;
+   max-width: 212px;
+   width: 100%;
+   margin: 0 auto;
+   }
+   .mb_show{
+   display:block;
+   }
+   .desktop_show{
+   display:none;
+   }
+  .custom_announcement_inner{
+   background-image:url({{ section.settings.mb_background_image | image_url }});
+   width: 100%;
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   padding: 10px 0 10px;
+   }
+   }
+{% endstyle %}
+
+<div class="custom_announcement_inner">
+  <div class="custom_announcement_title">
+    <p class="desktop_show">{{ section.settings.announcement_title }}</p>
+    <p class="mb_show">{{ section.settings.mb_announcement_title }}</p>
+  </div>
+</div>
+
+{% schema %}
+{
+"name": "Custom Announcement",
+"tag": "header",
+"class": "custom_announcement",
+"settings": [
+{
+"type": "text",
+"label": "Announcement Title",
+"id": "announcement_title"
+},
+{
+"type": "image_picker",
+"label": "Background Image",
+"id": "background_image"
+},
+{
+"type": "color",
+"label": "Text Color",
+"id": "text_color"
+},
+{
+"type": "text",
+"label": "Moblie Announcement Title",
+"id": "mb_announcement_title"
+},
+{
+"type": "image_picker",
+"label": "Moblie Background Image",
+"id": "mb_background_image"
+},
+],
+"blocks": [],
+"presets": [
+{
+"name": "Custom Announcement"
+}
+]
+}
+{% endschema %}

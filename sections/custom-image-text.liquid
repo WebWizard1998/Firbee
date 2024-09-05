@@ -1,0 +1,150 @@
+{% style %}
+  .custom-image{
+  background:{{section.settings.background_color}};
+  color:{{section.settings.text_color}};
+  }
+  .custom-image .sub_container{
+  padding-top:{{section.settings.padding_top}}px;
+  padding-bottom:{{section.settings.padding_bottom}}px;
+  padding-left:65px;
+  padding-right:65px;
+  }
+  .custom_image_text {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  }
+  .custom_text h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 48px;
+  line-height: 82px;
+  font-weight: 300;
+  color:{{section.settings.text_color}};
+
+  }
+  .custom_image {
+  max-width: 292px;
+  width: 100%;
+  }
+  .custom_image img {
+  display: block;
+  max-width: 100%;
+  }
+  .custom_text p {
+  max-width: 878px;
+  width: 100%;
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 300;
+  color:{{section.settings.text_color}};
+  margin: 0;
+  padding: 0;
+  }
+  @media(max-width:991px){
+  .custom-image .sub_container {
+  padding-top: 60px;
+  padding-bottom: 50px;
+  padding-left: 25px;
+  padding-right: 25px;
+  }
+  .custom_image img {
+  height: auto;
+  }
+  .custom_image {
+  max-width: 200px;
+  width: 100%;
+  }
+  .custom_image_text {
+  flex-wrap: wrap;
+  justify-content: center;
+  }
+  .custom_text h2 {
+  font-size: 36px;
+  line-height: 46px;
+  text-align: center;
+  }
+  .custom_text p {
+  padding-top:20px;
+  /* text-align: center; */
+  font-size: 18px;
+  line-height: 30px;
+  }
+
+  }
+{% endstyle %}
+
+<div class="sub_container">
+  <div class="custom_image_text">
+    <div class="custom_image">
+      <img src="{{ section.settings.image | image_url }}" width="292px" height="292px" alt="money_back">
+    </div>
+    <div class="custom_text">
+      <h2>{{ section.settings.heading }}</h2>
+      {{ section.settings.descrption }}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+"name": "custom image text",
+"tag": "section",
+"class": "custom-image",
+"settings": [
+{
+"type": "text",
+"label": "heading",
+"id": "heading",
+"default": "30 Day Money Back Guarantee"
+},
+{
+"type": "richtext",
+"label": "Descrption",
+"id": "descrption",
+"default": "<p>At Firebee we believe in building quality products that actually work. Firebee and its partners have invested over $85 million in research and development to create the highest quality wearable for customers to enjoy. If for any reason if you are not satisfied with your Firebee headband we will happily refund your purchase. </p>"
+},
+{
+"type": "image_picker",
+"label": "Image",
+"id": "image"
+},
+{
+"type": "range",
+"label": "padding top",
+"id": "padding_top",
+"default": 1,
+"min": 0,
+"max": 100,
+"step": 1,
+"unit": "px"
+},
+{
+"type": "range",
+"label": "padding bottom",
+"id": "padding_bottom",
+"default": 1,
+"min": 0,
+"max": 100,
+"step": 1,
+"unit": "px"
+},
+{
+"type": "color_background",
+"label": "background color",
+"id": "background_color"
+},
+{
+"type": "color",
+"label": "Text Color",
+"id": "text_color"
+}
+],
+"blocks": [],
+"presets": [
+{
+"name": "custom image text"
+}
+]
+}
+{% endschema %}
